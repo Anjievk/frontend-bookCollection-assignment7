@@ -1,4 +1,4 @@
-function Book({ data, onSelect, isSelected }) {
+function Book({ data, onSelect, isSelected, isOnLoan }) {
     const handleClick = () => {
         if (onSelect) {
             onSelect(data);
@@ -7,9 +7,12 @@ function Book({ data, onSelect, isSelected }) {
 
     return (
         <div
-            className={`book ${isSelected ? "selected" : ""}`}
+            className={`book ${isSelected ? "selected" : ""} ${isOnLoan ? "on-loan" : ""}`}
             onClick={handleClick}
         >
+            {isOnLoan && (
+                <div className="loan-badge">ON LOAN</div>
+            )}
             <img
                 className='book-image'
                 src={data.image}
