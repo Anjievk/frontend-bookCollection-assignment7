@@ -4,6 +4,7 @@ import Book from "./Components/bookButton";
 import Footer from "./Components/footer";
 import Filter from "./Components/Filter/filter";
 import LoanManagement from "./Components/LoanManagement";
+import BookDetails from "./Components/BookDetails";
 import data from "../data/books.json";
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
     const [selectedBookIds, setSelectedBookIds] = useState(null);
     const [filterAuthor, setFilterAuthor] = useState("");
     const [viewMode, setViewMode] = useState("books"); // "books" or "loans"
+    const [bookDetailsView, setBookDetailsView] = useState(null); // null or book object
 
     // Load loans from localStorage
     const [loans, setLoans] = useState(() => {
@@ -65,8 +67,17 @@ export default function App() {
                 onSelect={handleBookSelection}
                 isSelected={isSelected}
                 isOnLoan={isOnLoan}
+                onViewDetails={handleViewDetails}
             />
         );
+    }
+
+    function handleViewDetails(book) {
+        setBookDetailsView(book);
+    }
+
+    function handleCloseDetails() {
+        setBookDetailsView(null);
     }
 
     function handleBookSelection(book) {
@@ -147,40 +158,49 @@ export default function App() {
             <main>
                 {viewMode === "books" ? (
                     <>
-                        <Filter
-                            authors={authors}
-                            onFilterChange={setFilterAuthor}
-                            currentFilter={filterAuthor}
-                        />
-                        <div className='view-switcher'>
-                            <button
-                                className={`view-switch-btn ${
-                                    viewMode === "books" ? "active" : ""
-                                }`}
-                                onClick={() => setViewMode("books")}
-                            >
-                                Book Listing
-                            </button>
-                            <button
-                                className={`view-switch-btn ${
-                                    viewMode === "loans" ? "active" : ""
-                                }`}
-                                onClick={() => setViewMode("loans")}
-                            >
-                                Loan Management
-                            </button>
-                        </div>
-                        <div className='app-content'>
-                            <div className='add-col'>
-                                <NewButton
-                                    onAddBook={handleAddBook}
-                                    update={handleUpdateBook}
-                                    onDelete={handleDeleteBook}
-                                    book={selectedBookIds}
+                        {bookDetailsView ? (
+                            <BookDetails 
+                                book={bookDetailsView} 
+                                onClose={handleCloseDetails}
+                            />
+                        ) : (
+                            <>
+                                <Filter
+                                    authors={authors}
+                                    onFilterChange={setFilterAuthor}
+                                    currentFilter={filterAuthor}
                                 />
-                            </div>{" "}
-                            {filteredBooks.map((book) => getBooks(book))}
-                        </div>
+                                <div className='view-switcher'>
+                                    <button
+                                        className={`view-switch-btn ${
+                                            viewMode === "books" ? "active" : ""
+                                        }`}
+                                        onClick={() => setViewMode("books")}
+                                    >
+                                        Book Listing
+                                    </button>
+                                    <button
+                                        className={`view-switch-btn ${
+                                            viewMode === "loans" ? "active" : ""
+                                        }`}
+                                        onClick={() => setViewMode("loans")}
+                                    >
+                                        Loan Management
+                                    </button>
+                                </div>
+                                <div className='app-content'>
+                                    <div className='add-col'>
+                                        <NewButton
+                                            onAddBook={handleAddBook}
+                                            update={handleUpdateBook}
+                                            onDelete={handleDeleteBook}
+                                            book={selectedBookIds}
+                                        />
+                                    </div>{" "}
+                                    {filteredBooks.map((book) => getBooks(book))}
+                                </div>
+                            </>
+                        )}
                     </>
                 ) : (
                     <>

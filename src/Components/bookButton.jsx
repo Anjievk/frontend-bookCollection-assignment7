@@ -1,7 +1,14 @@
-function Book({ data, onSelect, isSelected, isOnLoan }) {
+function Book({ data, onSelect, isSelected, isOnLoan, onViewDetails }) {
     const handleClick = () => {
         if (onSelect) {
             onSelect(data);
+        }
+    };
+
+    const handleViewDetails = (e) => {
+        e.stopPropagation(); // Prevent triggering the parent onClick
+        if (onViewDetails) {
+            onViewDetails(data);
         }
     };
 
@@ -20,6 +27,13 @@ function Book({ data, onSelect, isSelected, isOnLoan }) {
             />
 
             <p className='author'>Author: {data.author}</p>
+            
+            <button 
+                className="btn-view-details"
+                onClick={handleViewDetails}
+            >
+                View Details
+            </button>
         </div>
     );
 }

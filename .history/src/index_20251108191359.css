@@ -587,7 +587,6 @@ dialog::backdrop {
     line-height: 56px;
     text-align: center;
     background-color: var(--white);
-    border: none;
     border-top: 2px solid var(--black);
     text-decoration: none;
     display: grid;
@@ -598,7 +597,6 @@ dialog::backdrop {
     font-size: 1.1rem;
     cursor: pointer;
     color: black;
-
     z-index: 1;
     > &:before {
         content: "";
@@ -631,6 +629,7 @@ dialog::backdrop {
     }
     &:hover {
         color: var(--white);
+        border-top: 2px solid var(--black);
     }
     &:hover:before {
         top: -35%;
