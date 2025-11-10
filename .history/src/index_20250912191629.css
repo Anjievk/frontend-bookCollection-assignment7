@@ -1,0 +1,22 @@
+:root {
+    --dark-purple: #0b1d51;
+    --light-purple: #725cad;
+    --light-blue: #8ccdeb;
+    --beige: #ffe3a9;
+    --white: #fff;
+    --black: #000;
+}
+
+* {
+    font-family: "Jersey 10", sans-serif;
+}
+
+/* Start App header style */
+.app-header {
+    background-color: var(--dark-purple);
+}
+
+.app-header h1 {
+    color: var(--white);
+}
+/* End App header style */

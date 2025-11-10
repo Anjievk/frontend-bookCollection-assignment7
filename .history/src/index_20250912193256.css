@@ -1,0 +1,44 @@
+:root {
+    --dark-purple: #0b1d51;
+    --light-purple: #725cad;
+    --light-blue: #8ccdeb;
+    --beige: #ffe3a9;
+    --white: #fff;
+    --black: #000;
+}
+
+* {
+    font-family: "Jersey 10", sans-serif;
+}
+
+/* Start App header style */
+.app-header {
+    background-color: var(--dark-purple);
+    width: 95%;
+    height: 5%;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 40px;
+    box-shadow: 0px 1px 13px 2px var(--dark-purple);
+}
+
+.app-header h1 {
+    color: var(--white);
+    letter-spacing: 5px;
+    font-size: 2.75rem;
+    padding: 3%;
+    text-align: center;
+}
+
+/* Start New Button style */
+.btn-new {
+    width: 250px;
+    height: 350px;
+    background-color: var(--light-blue);
+    border: none;
+    color: var(--black);
+    font-size: 1.5rem;
+    margin-left: 2%;
+}
+
+/* End New Button style */

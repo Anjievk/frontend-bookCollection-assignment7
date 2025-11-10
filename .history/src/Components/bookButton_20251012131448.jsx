@@ -1,0 +1,42 @@
+import { useEffect, useState } from "react";
+
+function Book({ book, setSelectedBookIds, selectedBookIds }) {
+    const [darkMode, setDarkMode] = useState(false);
+    const isSelected = selectedBookIds.includes(book.id);
+
+    useEffect(() => {
+        if (darkMode && isSelected) {
+            setDarkMode(false);
+        }
+    }, [darkMode, isSelected]);
+
+    function handleClick() {
+        setDarkMode((prevMode) => {
+            const newMode = !prevMode;
+            setSelectedBookId(newMode ? book.id : null);
+            return newMode;
+        });
+    }
+
+    return (
+        <div
+            className={`book ${darkMode ? "darkMode" : ""} ${
+                selectedBookId === book.id ? "selected" : ""
+            }`}
+            onClick={handleClick}
+        >
+            <img
+                className='book-image'
+                src={book.image}
+                alt={book.title}
+            />
+
+            <p className='author'>By {book.author}</p>
+
+            {/* <div onClick={(e) => e.stopPropagation()}>
+                <BookInfo url={props.url} />
+            </div> */}
+        </div>
+    );
+}
+export default Book;

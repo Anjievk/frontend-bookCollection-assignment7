@@ -1,0 +1,143 @@
+:root {
+    --light-blue-color: #cbd9e6;
+    --blue-color: #567cbd;
+    --beige-color: #f5efeb;
+    --dark-blue-color: #2f4156;
+    --white-color: #ffffff;
+}
+
+* {
+    font-family: Helvetica, sans-serif;
+}
+
+.App-header {
+    background-color: var(--light-blue-color);
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.App-name {
+    font-size: 30px;
+    color: var(--blue-color);
+}
+
+.App-main {
+    background-color: var(--beige-color);
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.App-main-content {
+    background-color: var(--white-color);
+    min-height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Learn-more {
+    color: var(--blue-color);
+    font-weight: bold;
+}
+
+.App-main-content-text {
+    font-size: 16px;
+    color: var(--dark-blue-color);
+}
+
+.New-button {
+    background-color: var(--white-color);
+    color: var(--blue-color);
+    border: 3px solid var(--light-blue-color);
+    border-radius: 10px;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.New-button:hover {
+    background-color: var(--blue-color);
+    color: var(--white-color);
+    box-shadow: 0 0 10px 0 var(--blue-color);
+}
+
+.App-content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.Book-container {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--dark-blue-color);
+    background-color: var(--blue-color);
+}
+
+.Book-cover {
+    width: 100%;
+    height: 100%;
+}
+
+.Book-cover-image {
+    width: 100%;
+    height: 100%;
+}
+
+.Book-author {
+    font-size: 14px;
+    background-color: var(--white-color);
+    color: var(--dark-blue-color);
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.Info-container {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Info-link {
+    font-size: 14px;
+    color: var(--blue-color);
+    background-color: var(--light-blue-color);
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Info-link:hover {
+    color: var(--dark-blue-color);
+    text-decoration: underline;
+    font-size: 16px;
+}

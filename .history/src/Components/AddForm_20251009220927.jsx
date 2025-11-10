@@ -1,0 +1,111 @@
+import { useState } from "react";
+
+function AddForm({ onAddBook, onClose }) {
+    // state to store form data
+    const [formData, setFormData] = useState({
+        title: "",
+        author: "",
+        image: "", // This will store the image URL
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const newBook = {
+            title: formData.title,
+            author: formData.author,
+            image: formData.image,
+        };
+
+        onAddBook(newBook);
+
+        setFormData({
+            title: "",
+            author: "",
+            image: "",
+        });
+
+        if (onClose) {
+            onClose();
+        }
+    };
+    // handle input change
+    return (
+        <div className='form-container'>
+            <form>
+                <h2>ADD BOOK</h2>
+                <div className='form-control'>
+                    <label htmlFor='title'>Title: </label>
+                    <input
+                        type='text'
+                        name='title'
+                        value={formData.title}
+                        placeholder='Book title'
+                    />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='author'>Author: </label>
+                    <input
+                        type='text'
+                        name='author'
+                        placeholder='Author'
+                    />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='publisher'>Publisher: </label>
+                    <input
+                        type='text'
+                        name='publisher'
+                        placeholder='Publisher'
+                    />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='publication-year'>Publication Year: </label>
+                    <input
+                        type='number'
+                        name='publication-year'
+                    />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='language'>Language: </label>
+                    <input
+                        type='text'
+                        name='language'
+                        placeholder='Language'
+                    />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='pages'>Pages: </label>
+                    <input
+                        type='number'
+                        name='page'
+                    />
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='url'>Url: </label>
+                    <input
+                        type='text'
+                        name='url'
+                    />
+                </div>
+
+                <button className='btn primary'>Save</button>
+            </form>
+
+            <img
+                src='https://st3.depositphotos.com/9461386/35794/v/450/depositphotos_357945126-stock-illustration-planet-space-retro-game-design.jpg'
+                alt='form-img-assist'
+            />
+        </div>
+    );
+}
+
+export default AddForm;

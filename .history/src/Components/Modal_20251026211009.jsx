@@ -1,0 +1,27 @@
+import { useRef } from "react";
+import React from "react";
+
+function Modal({ btnLabel, btnClassName, children }) {
+    const modalRef = useRef();
+
+    function openModal() {
+        modalRef.current.showModal();
+    }
+
+    function closeModal() {
+        modalRef.current.close();
+    }
+    return (
+        <>
+            <button
+                className={btnClassName}
+                onClick={openModal}
+            >
+                {btnLabel}
+            </button>
+            <dialog ref={modalRef}>{children}</dialog>
+        </>
+    );
+}
+
+export default Modal;
